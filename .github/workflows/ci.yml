@@ -29,9 +29,9 @@ jobs:
         run: pylint my_calculator/ --fail-under=7.0
 
       - name: Generate coverage badge
-        uses: tj-actions/coverage-badge-py@v2
-        with:
-          output: coverage.svg
+        run: |
+          pip install genbadge[coverage]
+          genbadge coverage -i coverage.xml -o coverage.svg
 
       - name: Save badge
         uses: stefanzweifel/git-auto-commit-action@v5
